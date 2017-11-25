@@ -11,8 +11,12 @@ int main()
     };
 
     std::vector<sf::Int16> samples = line;
-    buffer.loadFromSamples($samples[0], samples.size(), 2, 44100);
-
+    //buffer.loadFromSamples(samples[0], samples.size(), 2, 44100);
+    sf::SoundBuffer buffer;
+    buffer.loadFromSamples(samples[0], samples.size(), 2, 44100);
+    sf::Sound sound;
+    sound.setBuffer(buffer);
+    sound.play();
     while (window.isOpen())
     {
         sf::Event event;
@@ -25,11 +29,6 @@ int main()
         window.clear();
         window.draw(line, 2, sf::Lines);
         window.display();
-
-        sf::SoundBuffer buffer;
-        sf::Sound sound;
-        sound::setBuffer(buffer);
-        sound.play();
 
     }
 
